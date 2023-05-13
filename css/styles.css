@@ -1,0 +1,534 @@
+:root{
+    --primary-bgc-color: #F2F9FF;
+    --secondary-bgc-color: #DEF0FF;
+    --tertiary-bgc-color: #B5E4FF;
+    --accent-bgc-color: #0B83BE;
+
+    --primary-text-color: #1B1B1B;
+    --secondary-text-color: #FFFFFF;
+
+    --primary-title-color: #F0F0F0;
+    --secondary-title-color: #0F4C92;
+
+    --btn-main-color:#0D599C;
+    --btn-accent-color:#FF9728;
+
+    --reservation-bgc-color:#2B477C;
+    --reservation-text-color:#F4F4F4;
+
+    --primary-font-family: Roboto,sans-serif;
+    --secondary-font-family: Inter, sans-serif;
+}
+
+body {
+    background-color: var(--primary-bgc-color);
+    color: var(--primary-text-color);
+
+    font-family: var(--primary-font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* -------------- Компоненти -------------- */
+.container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    text-align: center;
+}
+
+.section{
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.logo{
+    display: inline-block;
+}
+
+.modal-btn{
+    min-width: 206px;
+    padding: 16px 40px;
+    border-style: none;
+    border-radius: 84px;
+
+    cursor: pointer;
+
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.19;
+
+    background-color: var(--btn-accent-color);
+    color: var(--secondary-text-color);
+
+    transition: background-color 250ms linear;
+}
+
+.modal-btn:hover, .modal-btn:focus{
+    background-color: rgba(255, 151, 40, .8);
+}
+
+.btn{
+    min-width: 314px;
+    padding: 16px 70px;
+    border-style: none;
+    border-radius: 95px;
+
+    cursor: pointer;
+
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.19;
+
+
+    color: var(--secondary-text-color);
+    background-color: var(--btn-main-color);
+
+    transition: background-color 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: rgba(13, 89, 156, .8);
+}
+
+
+.backdrop{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height:100vh;
+    
+    opacity:1;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    transition: opacity 250ms linear, visibility 250ms linear;
+}
+.body-fixed{
+    overflow: hidden;
+}
+
+.backdrop.is-hidden{
+    opacity: 0;
+    visibility: 0;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.modal{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 875px;
+    height: 502px;
+    padding: 50px;
+    text-align: center;
+
+    border-radius: 50px;
+    
+    background: linear-gradient(327.75deg, #0080BF 9.35%, #00496C 117.99%);
+
+    transform: translate(-50%, -50%) scale(1);
+
+    transition: transform 250ms linear;
+    
+}
+
+.btn-close {
+    position: absolute;
+    top:0;
+    right:0;
+
+    display: flex;
+    align-items: center;
+    width:40px;
+    height:40px;
+
+    border-style:none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    background-color:var(--secondary-bgc-color);
+    transition: background-color 250ms linear;
+}
+
+.btn-close:hover,
+.btn-close:focus {
+    color: var(--btn-main-color);
+}
+
+.btn-close .icon{
+    fill: currentColor;
+}
+
+.form__text{
+    margin-bottom: 78px;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.18;
+
+    color: #F9F9F9;
+}
+
+.form__wrapper{
+    margin-bottom: 55px;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+    gap:40px 15px;
+}
+
+.form__field{
+    position: relative;
+}
+
+.form__input{
+    padding: 15px 30px;
+    width: 352px;
+    background-color: transparent;
+    border: 1px solid #F7F6F6;
+    border-radius: 30px;
+}
+
+.form__input:not(:placeholder-shown){
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.17;
+
+    color: rgba(178, 227, 255, 0.85);
+}
+
+.form__label{
+    position: absolute;
+    top:50%;
+    left:30px;
+    transform: translateY(-50%);
+
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.17;
+
+    color: rgba(178, 227, 255, 0.85);
+
+    transition: transform 250ms linear;
+}
+.form__input:focus + .form__label {
+    transform: translateY(-50px);
+}
+
+.form__input:not(:focus).form__input:not(:placeholder-shown) +.form__label{
+transform: translateY(-50px);
+}
+
+
+.chat-button{
+    position: fixed;
+    right:50px;
+    bottom: 50px;
+    width: 80px;
+    height: 80px;
+
+    cursor: pointer;
+
+    border-style:none;
+
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1653/1653630.png");
+    background-size: contain;
+    background-color: transparent;
+}
+
+/* -------------- Секція Хедер -------------- */
+
+.header{
+    text-align: center;
+    background-color: var(--accent-bgc-color);
+}
+
+.header__container{
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    background-image: url('../images/header-bgc.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--accent-bgc-color);
+}
+
+.header__logo{
+    margin-bottom: 227px;
+}
+
+.header__title{
+    margin-bottom: 75px;
+
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.17;
+    
+    color: var(--primary-title-color);
+}
+
+.header__text{
+    margin-bottom: 35px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.15;
+
+    color: var(--primary-title-color);
+}
+
+.modal-btn__header{
+    margin-bottom: 136px;
+}
+
+.modal-btn__link{
+    text-decoration: none;
+
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.19;
+
+    color: var(--secondary-text-color);
+}
+
+/* -------------- Секція Інфо про готель -------------- */
+
+.hotel-description__section{
+    text-align: center;
+    background-color: var(--secondary-bgc-color);
+}
+
+.hotel-description__title{
+    margin-bottom: 40px;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.18;
+
+    color: var(--secondary-title-color);
+}
+
+.hotel-description__text{
+    display: inline-block;
+    width: 745px;
+
+    font-family: var(--secondary-font-family);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.22;
+
+    color: var(--secondary-title-color);
+}
+
+/* -------------- Секція Послуги готелю -------------- */
+
+.hotel-services__section{
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    background-color: var(--primary-bgc-color);
+}
+
+.hotel-services__item{
+    display: flex;
+    align-items: center;
+}
+
+.hotel-services__item:not(:last-child){
+    margin-bottom: 80px;
+}
+
+.hotel-services__item--even{
+    flex-direction: row-reverse;
+}
+
+.hotel-services__wrapper{
+    margin-left: 80px;
+}
+
+.hotel-services__wrapper--even {
+    margin-left: 0;
+    margin-right: 80px;
+}
+
+.hotel-services__title{
+    margin-bottom: 20px;
+
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.15;
+
+    color: var(--secondary-title-color);
+}
+
+.hotel-services__date{
+    margin-bottom: 40px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.15;
+    
+}
+
+.hotel-services__date--bold{
+    font-weight: 700;
+}
+
+.hotel-services__text{
+    margin-bottom: 40px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.44;
+}
+
+/* -------------- Секція Бронювання -------------- */
+
+.reservation__section{
+    background-color: var(--tertiary-bgc-color);
+}
+
+.reservation__section .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservation__wrapper{
+    width: 785px;
+    padding: 60px;
+    
+    border-radius: 19px;
+
+    text-align: center;
+    background-color: var(--reservation-bgc-color);
+}
+
+.reservation__title{
+    margin-bottom: 40px;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.18;
+
+    color: var(--reservation-text-color);
+}
+
+.reservation__text{
+    margin-bottom: 30px;
+
+    font-size: 18px;
+    line-height: 1.17;
+    color: var(--reservation-text-color);
+}
+
+/* -------------- Секція Розташування-------------- */
+
+.address__section{
+    padding-top: 78px;
+    padding-bottom: 0;
+}
+
+.address__title{
+    margin-bottom: 72px;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.18;
+
+    color: var(--secondary-title-color);
+}
+
+.address__map{
+    width: 100%;
+}
+
+/* -------------- Секція Футер -------------- */
+.footer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    background-color: var(--accent-bgc-color);
+}
+
+.footer__text{
+    margin-bottom: 90px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.15;
+
+    color: var(--secondary-text-color);
+}
+
+.footer__address-item:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer__address-link{
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.15;
+
+    color: var(--secondary-text-color);
+
+    transition: color 250ms linear;
+}
+
+.footer__address-link:hover, .footer__address-link:focus{
+    color: #ccc;
+}
+
+
+
